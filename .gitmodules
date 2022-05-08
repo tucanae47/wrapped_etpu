@@ -1,0 +1,3 @@
+[submodule "etpu"]
+	path = etpu
+	url = git@github.com:tucanae47/etpu.git
