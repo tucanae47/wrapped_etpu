@@ -21,8 +21,8 @@
 module edu_tpu_tb;
     initial begin
         // change to suit your project
-        $dumpfile ("project.vcd");
-        $dumpvars (0, project_tb);
+        $dumpfile ("edu_tpu.vcd");
+        $dumpvars (0, edu_tpu_tb);
         #1;
     end
 
