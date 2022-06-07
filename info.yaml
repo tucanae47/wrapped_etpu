@@ -8,19 +8,19 @@ project:
   license: LICENSE
 
 # optional interfaces you want to use: gpio, la1, la2, la3, irq, clk2, wishbone & openram
-interfaces: ['la1', 'gpio']
+interfaces: ['wishbone', 'gpio']
 
 # test within caravel
 caravel_test:
   recipe: "coco_test"
-  directory: "caravel_test"
+  directory: "caravel_edu_tpu"
   id: 1
-  module_name: "wrapped_project"
+  module_name: "wrapped_etpu"
 
 # module test
 module_test:
   recipe: "all" 
-  directory: "project directory"
+  directory: "etpu"
   makefile: "Makefile"
 
 # run the wrapper formal proof
@@ -35,11 +35,13 @@ openlane:
 # source required for various configs and module instantiation
 source:
     - wrapper.v
-    - other source files here
+    - etpu/src/edu_tpu.v
+    - etpu/src/sysa.v
+    - etpu/src/sysa_pe.v
 
 # gds - check nothing on metal 5, DRC & LVS
 final:
   directory: "final"
-  gds_filename: "gds/project.gds"
-  lvs_filename: "verilog/gl/project.v"
-  lef_filename: "lef/project.lef"
+  gds_filename: "gds/wrapped_etpu.gds"
+  lvs_filename: "verilog/gl/wrapped_etpu.v"
+  lef_filename: "lef/wrapped_etpu.lef"

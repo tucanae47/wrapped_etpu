@@ -147,10 +147,20 @@ module wrapped_project(
 
     // permanently set oeb so that outputs are always enabled: 0 is output, 1 is high-impedance
     assign buf_io_oeb = {`MPRJ_IO_PADS{1'b0}};
+    
+    edu_tpu etpu(
+                .caravel_wb_clk_i   (wb_clk_i ),
+                .caravel_wb_rst_i   (wb_rst_i | !active),
+                .caravel_wb_stb_i   (wbs_stb_i),
+                .caravel_wb_cyc_i   (wbs_cyc_i),
+                .caravel_wb_we_i    (wbs_we_i ),
+                .caravel_wb_sel_i   (wbs_sel_i),
+                .caravel_wb_dat_i   (wbs_dat_i),
+                .caravel_wb_adr_i   (wbs_adr_i),
+                .caravel_wb_ack_o   (buf_wbs_ack_o),
+                .caravel_wb_dat_o   (buf_wbs_dat_o)
+               );
 
-    // Instantiate your module here, 
-    // connecting what you need of the above signals. 
-    // Use the buffered outputs for your module's outputs.
 
 endmodule 
 `default_nettype wire

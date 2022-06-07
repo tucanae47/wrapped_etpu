@@ -18,7 +18,7 @@
 `timescale 1 ns / 1 ps
 
 // change module name to something that suits your project
-module project_tb;
+module edu_tpu_tb;
     initial begin
         // change to suit your project
         $dumpfile ("project.vcd");
@@ -84,7 +84,7 @@ module project_tb;
 
     spiflash #(
         // change the hex file to match your project
-        .FILENAME("project.hex")
+        .FILENAME("edu_tpu.hex")
     ) spiflash (
         .csb(flash_csb),
         .clk(flash_clk),
