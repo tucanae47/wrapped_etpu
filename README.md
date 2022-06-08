@@ -1,9 +1,6 @@
 # Information about your project
 
-This is a template project you can clone and use to take part in the multi project submission to the
-Google/Efabless/Skywater shuttle.
-
-The tools that will test and create the aggregated design are here: https://github.com/mattvenn/multi_project_tools
+putting together an educational TPU using a small 3x3 systolic array over caravel wishbone bus 
 
 # Project info.yaml
 
