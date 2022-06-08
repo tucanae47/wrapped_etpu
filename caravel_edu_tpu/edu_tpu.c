@@ -68,6 +68,8 @@ void main()
     reg_la1_iena = 0;
     reg_la1_data = 1;
     reg_la1_data = 0;
+    reg_wb_enable  = 1;
+
 
     // Input
     uint8_t W[3][3] = {{1, 4, 5},
@@ -90,6 +92,7 @@ void main()
     test_wb_set(w_data2);
     uint32_t w_data3 = Wt[2][2];
     test_wb_set(w_data3);
+    test_wb_set(0);
 
     //Coefs
     uint32_t w_data4 = I[0][0];

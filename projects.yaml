@@ -58,7 +58,7 @@ docs:
     macro_border:   25 # px
 
 projects:
-    rgb_mixer:
+    etpu:
         repo:   'https://github.com/tucanae47/wrapped_etpu'
         commit: 'mpw6'
         pos:    '0 0 N'
