@@ -4,7 +4,7 @@ project:
   title: "Educational tpu"
   description: "3x3 systolic array "
   picture: docs/empty.png
-  author: "Author"
+  author: "Camilo Soto"
   license: LICENSE
 
 # optional interfaces you want to use: gpio, la1, la2, la3, irq, clk2, wishbone & openram
