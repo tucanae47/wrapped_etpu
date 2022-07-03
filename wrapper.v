@@ -151,6 +151,7 @@ module wrapped_etpu(
     edu_tpu etpu(
                 .caravel_wb_clk_i   (wb_clk_i ),
                 .caravel_wb_rst_i   (wb_rst_i | !active),
+                .caravel_wb_rst2_i  (wb_rst_i | !active),
                 .caravel_wb_stb_i   (wbs_stb_i),
                 .caravel_wb_cyc_i   (wbs_cyc_i),
                 .caravel_wb_we_i    (wbs_we_i ),
