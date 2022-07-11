@@ -5,7 +5,7 @@ mode prove
 smtbmc
 
 [script]
-read -formal wrapper.v edu_tpu.v sysa.v sysa_pe.v
+read -formal wrapper.v edu_tpu.v sysa.v sysa_pe.v async_fifo.v fifo_2mem.v fifomem_dp.v rptr_empty.v sync_ptr.v sync_r2w.v sync_w2r.v wptr_full.v
 prep -top wrapped_etpu
 
 [files]
