@@ -19,7 +19,7 @@
 #include <stub.c>
 
 #define REG_CONFIG          		(*(volatile uint32_t*)0x30000000)
-#define PROJECT_ID 11
+#define PROJECT_ID 1
 
 
 void test_wb_set(uint32_t data)

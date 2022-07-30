@@ -3,7 +3,7 @@
 project: 
   title: "Educational tpu"
   description: "3x3 systolic array "
-  picture: docs/empty.png
+  picture: docs/etpu.png
   author: "Camilo Soto"
   license: LICENSE
 
