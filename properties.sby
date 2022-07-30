@@ -14,3 +14,11 @@ properties.v
 etpu/src/edu_tpu.v
 etpu/src/sysa.v
 etpu/src/sysa_pe.v
+etpu/src/async_fifo.v 
+etpu/src/fifo_2mem.v 
+etpu/src/fifomem_dp.v 
+etpu/src/rptr_empty.v 
+etpu/src/sync_ptr.v 
+etpu/src/sync_r2w.v 
+etpu/src/sync_w2r.v 
+etpu/src/wptr_full.v
