@@ -5,20 +5,12 @@ mode prove
 smtbmc
 
 [script]
-read -formal wrapper.v edu_tpu.v sysa.v sysa_pe.v async_fifo.v fifo_2mem.v fifomem_dp.v rptr_empty.v sync_ptr.v sync_r2w.v sync_w2r.v wptr_full.v
+read -formal wrapper.v edu_tpu.v dffram_tpu.v sysa_pe.v
 prep -top wrapped_etpu
 
 [files]
 wrapper.v
 properties.v
 etpu/src/edu_tpu.v
-etpu/src/sysa.v
+etpu/src/dffram_tpu.v
 etpu/src/sysa_pe.v
-etpu/src/async_fifo.v 
-etpu/src/fifo_2mem.v 
-etpu/src/fifomem_dp.v 
-etpu/src/rptr_empty.v 
-etpu/src/sync_ptr.v 
-etpu/src/sync_r2w.v 
-etpu/src/sync_w2r.v 
-etpu/src/wptr_full.v

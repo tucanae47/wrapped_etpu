@@ -5,18 +5,25 @@ set script_dir [file dirname [file normalize [info script]]]
 set ::env(DESIGN_NAME) wrapped_etpu
 
 # add your source files here
+
+
 set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/wrapper.v \
     $::env(DESIGN_DIR)/etpu/src/edu_tpu.v \
-    $::env(DESIGN_DIR)/etpu/src/sysa_pe.v \
-    $::env(DESIGN_DIR)/etpu/src/sysa.v \
-    $::env(DESIGN_DIR)/etpu/src/async_fifo.v \
-    $::env(DESIGN_DIR)/etpu/src/fifo_2mem.v \
-    $::env(DESIGN_DIR)/etpu/src/fifomem_dp.v \
-    $::env(DESIGN_DIR)/etpu/src/rptr_empty.v \
-    $::env(DESIGN_DIR)/etpu/src/sync_ptr.v \
-    $::env(DESIGN_DIR)/etpu/src/sync_r2w.v \
-    $::env(DESIGN_DIR)/etpu/src/sync_w2r.v \
-    $::env(DESIGN_DIR)/etpu/src/wptr_full.v"
+    $::env(DESIGN_DIR)/etpu/src/dffram_tpu.v \
+    $::env(DESIGN_DIR)/etpu/src/sysa_pe.v"
+
+# set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/wrapper.v \
+#     $::env(DESIGN_DIR)/etpu/src/edu_tpu.v \
+#     $::env(DESIGN_DIR)/etpu/src/sysa_pe.v \
+#     $::env(DESIGN_DIR)/etpu/src/sysa.v \
+#     $::env(DESIGN_DIR)/etpu/src/async_fifo.v \
+#     $::env(DESIGN_DIR)/etpu/src/fifo_2mem.v \
+#     $::env(DESIGN_DIR)/etpu/src/fifomem_dp.v \
+#     $::env(DESIGN_DIR)/etpu/src/rptr_empty.v \
+#     $::env(DESIGN_DIR)/etpu/src/sync_ptr.v \
+#     $::env(DESIGN_DIR)/etpu/src/sync_r2w.v \
+#     $::env(DESIGN_DIR)/etpu/src/sync_w2r.v \
+#     $::env(DESIGN_DIR)/etpu/src/wptr_full.v"
 # target density, change this if you can't get your design to fit
 set ::env(PL_TARGET_DENSITY) 0.4
 
