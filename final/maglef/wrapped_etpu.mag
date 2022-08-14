@@ -1,11 +1,11 @@
 magic
 tech sky130B
 magscale 1 2
-timestamp 1659195608
+timestamp 1660477633
 << obsli1 >>
 rect 1104 2159 68816 69649
 << obsm1 >>
-rect 14 824 69630 69680
+rect 14 1300 69630 71460
 << metal2 >>
 rect 634 71200 746 72000
 rect 1278 71200 1390 72000
@@ -916,8 +916,8 @@ port 223 nsew signal input
 string FIXED_BBOX 0 0 70000 72000
 string LEFclass BLOCK
 string LEFview TRUE
-string GDS_END 1955322
-string GDS_FILE /home/runner/caravel_user_project/openlane/wrapped_etpu/runs/22_07_30_17_39/results/signoff/wrapped_etpu.magic.gds
-string GDS_START 132674
+string GDS_END 1853186
+string GDS_FILE /home/runner/caravel_user_project/openlane/wrapped_etpu/runs/22_08_14_13_46/results/signoff/wrapped_etpu.magic.gds
+string GDS_START 112056
 << end >>
 

@@ -147,6 +147,7 @@ module wrapped_etpu(
 
     // permanently set oeb so that outputs are always enabled: 0 is output, 1 is high-impedance
     assign buf_io_oeb = {`MPRJ_IO_PADS{1'b0}};
+    assign buf_io_out[21] = active;
     
     edu_tpu etpu(
                 .caravel_wb_clk_i   (wb_clk_i ),
