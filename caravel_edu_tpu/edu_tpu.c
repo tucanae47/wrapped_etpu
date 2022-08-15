@@ -17,14 +17,21 @@
 
 #include <defs.h>
 #include <stub.c>
+// #include <stdio.h>
 
-#define REG_CONFIG          		(*(volatile uint32_t*)0x30000000)
+#define BASE_ADDR          		(*(volatile uint32_t*)0x30000000)
 #define PROJECT_ID 1
+#define NPURAM(addr)       		(*(volatile uint32_t*)(BASE_ADDR + (addr & 0x3fc)))
 
 
-void test_wb_set(uint32_t data)
+void test_wb_set(uint8_t addr, uint32_t data)
 {
-    REG_CONFIG = data;
+    NPURAM(addr) = data;
+}
+
+ uint32_t test_wb_get(uint8_t addr)
+{
+    return NPURAM(addr);
 }
 
 
@@ -51,23 +58,24 @@ void main()
 	reg_mprj_io_9 =   GPIO_MODE_USER_STD_INPUT_NOPULL;
 
     // 2 outputs
-	reg_mprj_io_14 =  GPIO_MODE_USER_STD_OUTPUT;
-	reg_mprj_io_15 =  GPIO_MODE_USER_STD_OUTPUT;
+	// reg_mprj_io_14 =  GPIO_MODE_USER_STD_OUTPUT;
+	// reg_mprj_io_15 =  GPIO_MODE_USER_STD_OUTPUT;
+    reg_mprj_io_21 =   GPIO_MODE_USER_STD_OUTPUT;
 
     /* Apply configuration */
     reg_mprj_xfer = 1;
     while (reg_mprj_xfer == 1);
 
     // activate the project by setting the 0th bit of 1st bank of LA
-    reg_la0_iena = 0; // input enable off
-    reg_la0_oenb = 1; // enable logic analyser output (ignore the name, 1 is on, 0 off)
+    // reg_la0_iena = 0; // input enable off
+    // reg_la0_oenb = 1; // enable logic analyser output (ignore the name, 1 is on, 0 off)
+    reg_la0_iena = 0xFFFFFFFF; // input enable off
+    reg_la0_oenb = 0xFFFFFFFF; // output enable on
+
+    // enable wishbone
+    reg_wb_enable  = 1;
     reg_la0_data |= (1 << PROJECT_ID); // enable the project
 
-    // reset design with 0bit of 2nd bank of LA
-    reg_la1_oenb = 1; // enable
-    reg_la1_iena = 0;
-    reg_la1_data = 1;
-    reg_la1_data = 0;
     reg_wb_enable  = 1;
 
 
@@ -84,26 +92,31 @@ void main()
         {5, 9, 0},
         {6, 11, 19}};
     // no need for anything else as this design is free running.
+    for (uint8_t i =0; i< 9; i++)
+        test_wb_set(i, i);
+
+    for (uint8_t i =0; i< 9; i++)
+        test_wb_get(i);
 
     //Ws
-    uint32_t w_data1 = Wt[1][0] << 24 | Wt[0][2] << 16 | Wt[0][1] << 8 | Wt[0][0];
-    test_wb_set(w_data1);
-    uint32_t w_data2 = Wt[2][1] << 24 | Wt[2][0] << 16 | Wt[1][2] << 8 | Wt[1][1];
-    test_wb_set(w_data2);
-    uint32_t w_data3 = Wt[2][2];
-    test_wb_set(w_data3);
-    test_wb_set(0);
+    // uint32_t w_data1 = Wt[1][0] << 24 | Wt[0][2] << 16 | Wt[0][1] << 8 | Wt[0][0];
+    // test_wb_set(w_data1);
+    // uint32_t w_data2 = Wt[2][1] << 24 | Wt[2][0] << 16 | Wt[1][2] << 8 | Wt[1][1];
+    // test_wb_set(w_data2);
+    // uint32_t w_data3 = Wt[2][2];
+    // test_wb_set(w_data3);
+    // test_wb_set(0);
 
-    //Coefs
-    uint32_t w_data4 = I[0][0];
-    test_wb_set(w_data4);
-    uint32_t w_data5 = I[1][0] << 8 | I[0][1];
-    test_wb_set(w_data5);
-    uint32_t w_data6 = I[2][0] << 16 | I[1][1] << 8 | I[0][2];
-    test_wb_set(w_data6);
-    uint32_t w_data7 = I[2][1] << 16 | I[1][2] << 8;
-    test_wb_set(w_data7);
-    uint32_t w_data8 = I[2][2] << 16;
-    test_wb_set(w_data8);
+    // //Coefs
+    // uint32_t w_data4 = I[0][0];
+    // test_wb_set(w_data4);
+    // uint32_t w_data5 = I[1][0] << 8 | I[0][1];
+    // test_wb_set(w_data5);
+    // uint32_t w_data6 = I[2][0] << 16 | I[1][1] << 8 | I[0][2];
+    // test_wb_set(w_data6);
+    // uint32_t w_data7 = I[2][1] << 16 | I[1][2] << 8;
+    // test_wb_set(w_data7);
+    // uint32_t w_data8 = I[2][2] << 16;
+    // test_wb_set(w_data8);
 }
 
