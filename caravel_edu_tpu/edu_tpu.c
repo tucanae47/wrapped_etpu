@@ -119,7 +119,7 @@ void main()
         // uint32_t d1= get_data(i);
     }
     for (uint8_t i =0; i< 9; i++){
-        set_stream(i, i);
+        set_stream(i, (127 | 127<< 8 | 127<< 16));
         // uint32_t d1= get_data(i);
     }
     for (uint8_t i =0; i< 9; i++){
