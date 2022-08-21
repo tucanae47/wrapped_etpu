@@ -36,7 +36,9 @@ openlane:
 source:
     - wrapper.v
     - etpu/src/edu_tpu.v
-    - etpu/src/dffram_tpu.v
+    - etpu/src/dffram.v
+    - etpu/src/npu_wb.v
+    - etpu/src/dffram_wb.v
     - etpu/src/sysa_pe.v
 
 # gds - check nothing on metal 5, DRC & LVS

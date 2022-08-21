@@ -19,32 +19,27 @@
 #include <stub.c>
 // #include <stdio.h>
 
-#define W_ADDR(addr)          		(*(volatile uint32_t*)(0x30000000 + (addr)))
-#define S_ADDR(addr)          		(*(volatile uint32_t*)(0x30000100 + (addr)))
-#define R_ADDR(addr)          		(*(volatile uint32_t*)(0x30000200 + (addr)))
-
+#define REG_CONFIG          		(*(volatile uint32_t*)0x30000000)
+// #define BASE_ADDR          		(*(volatile uint32_t*)0x30000000)
+// #define BASE_ADDR          		(*(volatile uint32_t*)0x30000000)
+#define BASE_ADDR          		    (*(volatile uint32_t*)0x30000000)
+#define BASE_ADDR1          		(*(volatile uint32_t*)0x30000004)
+// #define BASE_ADDR2          		(*(volatile uint32_t*)0x30000008)
+// #define BASE_ADDR2(addr)          		(*(volatile uint32_t*)(0x30000108 + (addr)))
+// #define BASE_ADDR2(addr)          		(*(volatile uint32_t*)(0x30000108 + (addr)))
+#define BASE_ADDR2(addr)          		(*(volatile uint32_t*)(0x30000208 + (addr)))
+#define BASE_ADDR2(addr)          		(*(volatile uint32_t*)(0x30000208 + (addr)))
+#define BASE_ADDR2(addr)          		(*(volatile uint32_t*)(0x30000208 + (addr)))
 #define PROJECT_ID 1
+#define NPURAM(addr)       		(*(uint32_t*)(BASE_ADDR + (addr)))
 
 
-void set_ws(const uint8_t addr,uint32_t data){
-        W_ADDR(addr * 4) = data;
+void set_data(const uint8_t addr,uint32_t data){
+        BASE_ADDR2(addr * 4) = data;
 }
-uint32_t get_ws(const uint8_t addr){
-        return W_ADDR(addr * 4);
+uint32_t get_data(const uint8_t addr){
+        return BASE_ADDR2(addr * 4);
 }
-void set_stream(const uint8_t addr,uint32_t data){
-        S_ADDR(addr * 4) = data;
-}
-uint32_t get_stream(const uint8_t addr){
-        return S_ADDR(addr * 4);
-}
-void set_readout(const uint8_t addr,uint32_t data){
-        R_ADDR(addr * 4) = data;
-}
-uint32_t get_readout(const uint8_t addr){
-        return R_ADDR(addr * 4);
-}
-
 
 void main()
 {
@@ -85,62 +80,17 @@ void main()
 
     // enable wishbone
     reg_wb_enable  = 1;
-    // reg_la0_data |= (1 << PROJECT_ID); // enable the project
 
-    // reg_la0_iena = 0; // input enable off
-    // reg_la0_oenb = 0; // output enable bar low (enabled)
-
-    // reg_wb_enable  = 1;
-
-
-    // Input
-    // uint8_t W[3][3] = {{1, 4, 5},
-    //     {5, 8, 9},
-    //     {6, 7, 11}};
-
-    // uint8_t Wt[3][3]  = {{1, 5, 6},
-    //     {4, 8, 7},
-    //     {5, 9, 11}};
-
-    // uint8_t I[3][3]  = {{1, 5, 12},
-    //     {5, 9, 0},
-    //     {6, 11, 19}};
-    // no need for anything else as this design is free running.
-    // for (uint8_t i =0; i< 9; i++)
 
 
     reg_la0_data |= (1 << PROJECT_ID); // enable the project
-    // for (uint8_t i =0; i< 9; i++){
-    //     config_generator(i, 10+i, 4+i, ((1+i)%2));
-    //     uint32_t d1= read_regs(i);
-    // }
-    for (uint8_t i =0; i< 9; i++){
-        set_ws(i, i);
-        // uint32_t d1= get_data(i);
+  
+    for (uint8_t i =0; i< 20; i++){
+        set_data(i, i);
     }
-    for (uint8_t i =0; i< 9; i++){
-        uint32_t d1= get_readout(i);
+    for (uint8_t i =0; i< 20; i++){
+        uint32_t d1= get_data(i);
     }
-
-    //Ws
-    // uint32_t w_data1 = Wt[1][0] << 24 | Wt[0][2] << 16 | Wt[0][1] << 8 | Wt[0][0];
-    // test_wb_set(w_data1);
-    // uint32_t w_data2 = Wt[2][1] << 24 | Wt[2][0] << 16 | Wt[1][2] << 8 | Wt[1][1];
-    // test_wb_set(w_data2);
-    // uint32_t w_data3 = Wt[2][2];
-    // test_wb_set(w_data3);
-    // test_wb_set(0);
-
-    // //Coefs
-    // uint32_t w_data4 = I[0][0];
-    // test_wb_set(w_data4);
-    // uint32_t w_data5 = I[1][0] << 8 | I[0][1];
-    // test_wb_set(w_data5);
-    // uint32_t w_data6 = I[2][0] << 16 | I[1][1] << 8 | I[0][2];
-    // test_wb_set(w_data6);
-    // uint32_t w_data7 = I[2][1] << 16 | I[1][2] << 8;
-    // test_wb_set(w_data7);
-    // uint32_t w_data8 = I[2][2] << 16;
-    // test_wb_set(w_data8);
+ 
 }
 
