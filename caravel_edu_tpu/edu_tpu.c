@@ -98,13 +98,13 @@ void main()
     //     {5, 8, 9},
     //     {6, 7, 11}};
 
-    // uint8_t Wt[3][3]  = {{1, 5, 6},
-    //     {4, 8, 7},
-    //     {5, 9, 11}};
+    uint8_t Wt[3][3]  = {{1, 5, 6},
+                        {4, 8, 7},
+                        {5, 9, 11}};
 
-    // uint8_t I[3][3]  = {{1, 5, 12},
-    //     {5, 9, 0},
-    //     {6, 11, 19}};
+    uint8_t I[3][3]  = {{1, 5, 12},
+                        {5, 9, 0},
+                        {6, 11, 19}};
     // no need for anything else as this design is free running.
     // for (uint8_t i =0; i< 9; i++)
 
@@ -114,14 +114,34 @@ void main()
     //     config_generator(i, 10+i, 4+i, ((1+i)%2));
     //     uint32_t d1= read_regs(i);
     // }
+    uint8_t indexes[9][2] = {{0, 0}, {0, 1}, {0, 2}, {1, 0}, {1, 1}, {1, 2}, {2, 0}, {2, 1}, {2, 2}};
     for (uint8_t i =0; i< 9; i++){
-        set_ws(i, i);
+        int x,y;
+        x = indexes[i][0];
+        y = indexes[i][1];
+        set_ws(i, Wt[x][y]);
         // uint32_t d1= get_data(i);
     }
-    for (uint8_t i =0; i< 9; i++){
-        set_stream(i, (127 | 127<< 8 | 127<< 16));
-        // uint32_t d1= get_data(i);
-    }
+
+    uint32_t w_data4 = I[0][0];
+    set_stream(0,w_data4);
+
+    uint32_t w_data5 = I[1][0] << 8 | I[0][1];
+    set_stream(1,w_data5);
+
+    uint32_t w_data6 = I[2][0] << 16 | I[1][1] << 8 | I[0][2];
+    set_stream(2,w_data6);
+
+    uint32_t w_data7 = I[2][1] << 16 | I[1][2] << 8;
+    set_stream(3,w_data7);
+
+    uint32_t w_data8 = 1<<24 | I[2][2] << 16;
+    set_stream(4,w_data8);
+
+    // for (uint8_t i =0; i< 9; i++){
+    //     set_stream(i, (127 | 127<< 8 | 127<< 16));
+    //     // uint32_t d1= get_data(i);
+    // }
     for (uint8_t i =0; i< 9; i++){
         uint32_t d1= get_readout(i);
     }
