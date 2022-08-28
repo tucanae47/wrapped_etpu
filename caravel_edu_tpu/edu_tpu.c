@@ -40,9 +40,11 @@ uint32_t get_stream(const uint8_t addr){
 }
 void set_readout(const uint8_t addr,uint32_t data){
         R_ADDR(addr * 4) = data;
+        // R_ADDR(addr ) = data;
 }
 uint32_t get_readout(const uint8_t addr){
         return R_ADDR(addr * 4);
+        // return R_ADDR(addr );
 }
 
 
@@ -142,9 +144,10 @@ void main()
     //     set_stream(i, (127 | 127<< 8 | 127<< 16));
     //     // uint32_t d1= get_data(i);
     // }
-    for (uint8_t i =0; i< 9; i++){
+    for (uint8_t i =5; i< 24; i++){
         uint32_t d1= get_readout(i);
     }
+    set_stream(4,0);
 
     //Ws
     // uint32_t w_data1 = Wt[1][0] << 24 | Wt[0][2] << 16 | Wt[0][1] << 8 | Wt[0][0];
