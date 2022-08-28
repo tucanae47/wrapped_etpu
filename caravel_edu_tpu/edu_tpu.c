@@ -124,30 +124,23 @@ void main()
         set_ws(i, Wt[x][y]);
         // uint32_t d1= get_data(i);
     }
+    for (int z=0 ; z < 2; z++ ){
+        uint32_t w_data4 = I[0][0];
+        set_stream(0,w_data4);
+        uint32_t w_data5 = I[1][0] << 8 | I[0][1];
+        set_stream(1,w_data5);
+        uint32_t w_data6 = I[2][0] << 16 | I[1][1] << 8 | I[0][2];
+        set_stream(2,w_data6);
+        uint32_t w_data7 = I[2][1] << 16 | I[1][2] << 8;
+        set_stream(3,w_data7);
+        uint32_t w_data8 = 1<<24 | I[2][2] << 16;
+        set_stream(4,w_data8);
 
-    uint32_t w_data4 = I[0][0];
-    set_stream(0,w_data4);
-
-    uint32_t w_data5 = I[1][0] << 8 | I[0][1];
-    set_stream(1,w_data5);
-
-    uint32_t w_data6 = I[2][0] << 16 | I[1][1] << 8 | I[0][2];
-    set_stream(2,w_data6);
-
-    uint32_t w_data7 = I[2][1] << 16 | I[1][2] << 8;
-    set_stream(3,w_data7);
-
-    uint32_t w_data8 = 1<<24 | I[2][2] << 16;
-    set_stream(4,w_data8);
-
-    // for (uint8_t i =0; i< 9; i++){
-    //     set_stream(i, (127 | 127<< 8 | 127<< 16));
-    //     // uint32_t d1= get_data(i);
-    // }
-    for (uint8_t i =5; i< 24; i++){
-        uint32_t d1= get_readout(i);
+        for (uint8_t i =5; i< 30; i++){
+                uint32_t d1= get_readout(i);
+        }
+        set_stream(4,0);
     }
-    set_stream(4,0);
 
     //Ws
     // uint32_t w_data1 = Wt[1][0] << 24 | Wt[0][2] << 16 | Wt[0][1] << 8 | Wt[0][0];
