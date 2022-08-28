@@ -9,7 +9,7 @@ set ::env(DESIGN_NAME) wrapped_etpu
 
 set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/wrapper.v \
     $::env(DESIGN_DIR)/etpu/src/edu_tpu.v \
-    $::env(DESIGN_DIR)/etpu/src/dffram.v \
+    $::env(DESIGN_DIR)/etpu/src/npu_wb.v \
     $::env(DESIGN_DIR)/etpu/src/sysa_pe.v"
 
 # set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/wrapper.v \
