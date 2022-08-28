@@ -29,12 +29,12 @@ async def test_start(dut):
     await with_timeout(RisingEdge(dut.dbg_active), 2000, 'us')
 
     # # wait
-    cycle = 20
-    period = int(340000/cycle)
-    for i in range (cycle):
-        print(i, dut.load_end, dut.en, dut.out1)
-        await ClockCycles(dut.clk, period)
-
-    # # assert something
-    # assert(0 == 25)
+    # cycle = 3
+    period = int(153000)
+    # period = int(340000/cycle) one convolution takes around 342000 cycles 
+    await ClockCycles(dut.clk, period)
+    print(0, dut.load_end, dut.en, dut.out1)
+    # assert tpu is active and running 
+    assert (int(dut.en) ==1)
+    assert (int(dut.load_end) ==3 )
 
