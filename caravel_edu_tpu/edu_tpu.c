@@ -23,7 +23,7 @@
 #define S_ADDR(addr) (*(volatile uint32_t *)(0x30000100 + (addr)))
 #define R_ADDR(addr) (*(volatile uint32_t *)(0x30000200 + (addr)))
 
-#define PROJECT_ID 1
+#define PROJECT_ID 3
 
 void set_ws(const uint8_t addr, uint32_t data)
 {
@@ -99,25 +99,11 @@ void main()
         while (reg_mprj_xfer == 1)
                 ;
 
-        // activate the project by setting the 0th bit of 1st bank of LA
-        // reg_la0_iena = 0; // input enable off
-        // reg_la0_oenb = 1; // enable logic analyser output (ignore the name, 1 is on, 0 off)
         reg_la0_iena = 0xFFFFFFFF; // input enable off
         reg_la0_oenb = 0xFFFFFFFF; // output enable on
 
         // enable wishbone
         reg_wb_enable = 1;
-        // reg_la0_data |= (1 << PROJECT_ID); // enable the project
-
-        // reg_la0_iena = 0; // input enable off
-        // reg_la0_oenb = 0; // output enable bar low (enabled)
-
-        // reg_wb_enable  = 1;
-
-        // Input
-        // uint8_t W[3][3] = {{1, 4, 5},
-        //     {5, 8, 9},
-        //     {6, 7, 11}};
 
         uint8_t Wt[3][3] = {{1, 5, 6},
                             {4, 8, 7},
