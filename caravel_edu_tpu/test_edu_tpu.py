@@ -29,8 +29,11 @@ async def test_start(dut):
     await with_timeout(RisingEdge(dut.dbg_active), 2000, 'us')
 
     # # wait
-    await ClockCycles(dut.clk, 540000)
-
+    cycle = 20
+    period = int(340000/cycle)
+    for i in range (cycle):
+        print(i, dut.load_end, dut.en, dut.out1)
+        await ClockCycles(dut.clk, period)
 
     # # assert something
     # assert(0 == 25)

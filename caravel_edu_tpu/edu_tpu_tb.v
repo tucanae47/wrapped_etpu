@@ -36,7 +36,10 @@ module edu_tpu_tb;
 
     ///// convenience signals that match what the cocotb test modules are looking for
     // change to suit your project. Here's how we can make some nicer named signals for inputs & outputs
-    wire dbg_active         = mprj_io[21];
+    wire dbg_active         = mprj_io[29];
+    wire [15:0] out1 = mprj_io[23:8];
+    wire [3:0] load_end = mprj_io[27:24];
+    wire en         = mprj_io[28];
     /////
     
 

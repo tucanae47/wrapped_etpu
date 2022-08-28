@@ -69,11 +69,30 @@ void main()
         | 001    | 0     | 0     | 0      | 0      | 0     | 0       | 0       | 0     | 1     | 0       |
 
         */
+        reg_mprj_io_8  =   GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_9  =   GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_10 =   GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_11 =   GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_12 =   GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_13 =   GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_14 =   GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_15 =   GPIO_MODE_USER_STD_OUTPUT;
+        reg_mprj_io_16 =   GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_17  =   GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_18 =   GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_19 =   GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_20 =   GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_21 =   GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_22 =   GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_23 =   GPIO_MODE_USER_STD_OUTPUT;
 
-        reg_mprj_io_8 = GPIO_MODE_USER_STD_INPUT_NOPULL;
-        reg_mprj_io_9 = GPIO_MODE_USER_STD_INPUT_NOPULL;
+        reg_mprj_io_24 = GPIO_MODE_USER_STD_OUTPUT;
+        reg_mprj_io_25 = GPIO_MODE_USER_STD_OUTPUT;
+        reg_mprj_io_26 = GPIO_MODE_USER_STD_OUTPUT;
+        reg_mprj_io_27 = GPIO_MODE_USER_STD_OUTPUT;
 
-        reg_mprj_io_21 = GPIO_MODE_USER_STD_OUTPUT;
+        reg_mprj_io_28 = GPIO_MODE_USER_STD_OUTPUT;
+        reg_mprj_io_29 = GPIO_MODE_USER_STD_OUTPUT;
 
         /* Apply configuration */
         reg_mprj_xfer = 1;
@@ -125,7 +144,7 @@ void main()
                 // uint32_t d1= get_data(i);
         }
         // here we can change the values of the input stream for convolutions calculation
-        for (int z = 0; z < 3; z++)
+        for (int z = 0; z < 1; z++)
         {
                 uint32_t w_data4 = I[0][0];
                 set_stream(0, w_data4);
