@@ -5,12 +5,12 @@ mode prove
 smtbmc
 
 [script]
-read -formal wrapper.v edu_tpu.v dffram_tpu.v sysa_pe.v
+read -formal wrapper.v edu_tpu.v npu_wb.v sysa_pe.v
 prep -top wrapped_etpu
 
 [files]
 wrapper.v
 properties.v
 etpu/src/edu_tpu.v
-etpu/src/dffram_tpu.v
+etpu/src/npu_wb.v
 etpu/src/sysa_pe.v
