@@ -37,4 +37,5 @@ async def test_start(dut):
     # assert tpu is active and running 
     assert (int(dut.en) ==1)
     assert (int(dut.load_end) ==3 )
+    # await ClockCycles(dut.clk, 277000)
 
