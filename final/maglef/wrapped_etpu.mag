@@ -1,11 +1,11 @@
 magic
 tech sky130B
 magscale 1 2
-timestamp 1661706560
+timestamp 1661947507
 << obsli1 >>
 rect 1104 2159 178848 177361
 << obsm1 >>
-rect 14 1300 178848 177392
+rect 14 1776 178848 179444
 << metal2 >>
 rect 634 179200 746 180000
 rect 3854 179200 3966 180000
@@ -573,13 +573,14 @@ rect 142448 2128 142768 177392
 rect 157808 2128 158128 177392
 rect 173168 2128 173488 177392
 << obsm4 >>
-rect 50843 2347 65568 150517
-rect 66048 2347 80928 150517
-rect 81408 2347 96288 150517
-rect 96768 2347 111648 150517
-rect 112128 2347 127008 150517
-rect 127488 2347 142368 150517
-rect 142848 2347 153397 150517
+rect 58203 3435 65568 114341
+rect 66048 3435 80928 114341
+rect 81408 3435 96288 114341
+rect 96768 3435 111648 114341
+rect 112128 3435 127008 114341
+rect 127488 3435 142368 114341
+rect 142848 3435 157728 114341
+rect 158208 3435 164069 114341
 << labels >>
 rlabel metal2 s 634 179200 746 180000 6 active
 port 1 nsew signal input
@@ -1051,8 +1052,8 @@ port 223 nsew signal input
 string FIXED_BBOX 0 0 180000 180000
 string LEFclass BLOCK
 string LEFview TRUE
-string GDS_END 32254634
-string GDS_FILE /home/runner/caravel_user_project/openlane/wrapped_etpu/runs/22_08_28_18_54/results/signoff/wrapped_etpu.magic.gds
-string GDS_START 891348
+string GDS_END 31961040
+string GDS_FILE /home/runner/caravel_user_project/openlane/wrapped_etpu/runs/22_08_31_13_51/results/signoff/wrapped_etpu.magic.gds
+string GDS_START 879704
 << end >>
 

@@ -2,7 +2,7 @@
 # information
 project: 
   title: "Educational tpu"
-  description: "3x3 systolic array "
+  description: "3x3 systolic array over wishbone bus"
   picture: docs/etpu.png
   author: "Camilo Soto"
   license: LICENSE
